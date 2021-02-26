@@ -1,10 +1,12 @@
 package com.example.demo.model;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import java.util.Collection;
+import java.util.Set;
 
 
 @Entity
@@ -19,8 +21,8 @@ public class User extends AbstractEntity{
     private double Balance;
 
 
-    @OneToMany (mappedBy="transactions", fetch=FetchType.EAGER)
-    private Collection<com.example.demo.model.Transactions> Transactions;
+    @OneToMany (mappedBy="transactions", cascade = CascadeType.ALL)
+    private Set<Transactions> Transactions;
 //    @OneToMany(mappedBy="transaction", fetch= FetchType.EAGER)
 //    private Collection<Transaction> Transactions;
 //    public Long getId() {
